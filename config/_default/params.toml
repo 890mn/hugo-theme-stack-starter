@@ -54,11 +54,6 @@ limit = 10
 [[widgets.page]]
 type = "toc"
 
-[defaultImage.opengraph]
-enabled = true
-local = true
-src = "/img/Uranus23.jpg"
-
 [colorScheme]
 toggle = true
 default = "auto"

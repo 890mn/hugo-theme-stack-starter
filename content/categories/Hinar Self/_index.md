@@ -1,5 +1,5 @@
 ---
-title: Hinar-Self
+title: "Hinar Self"
 description: something about myself
-image: img/Uranus23.jpg
+image: "true.jpg"
 ---
