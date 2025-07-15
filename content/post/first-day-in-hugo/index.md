@@ -1,7 +1,7 @@
 ---
 title: First Day in Hugo
 description: after 2years Wordpress, why i choose hugo?
-date: 2025-07-15 14:00:00+0000
+date: 2025-07-15
 categories: ["Hinar Self"]
 tags: ["Daily"]
 ---
