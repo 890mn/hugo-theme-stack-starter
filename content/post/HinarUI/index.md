@@ -4,7 +4,7 @@ description:
 date: 2025-07-15 02:00:00+0000
 categories: ["Embedded Develop"]
 tags: ["UI"]
-image: https://raw.githubusercontent.com/890mn/HinarUI/main/pic/HinarUI_Cover.jpg
+image: cover.jpg
 ---
 
 Hello Hugo!
