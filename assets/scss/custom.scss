@@ -12,7 +12,7 @@
             background: var(--card-background);
             border: none;
             box-shadow: var(--shadow-l2);
-            margin-bottom: 8px;
+            margin-bottom: -8px;
             border-radius: 10px;
             transition: transform .2s;
 
@@ -33,12 +33,12 @@
     color: var(--accent-color);
     font-weight: 700;
     font-size: 1.6rem;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .article-list--compact.links {
     // 缩小连接组标题与下面链接的距离
-    margin-top: -20px;
+    margin-top: -30px;
 }
 
 .article-image>img {
