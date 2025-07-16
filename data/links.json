@@ -1,0 +1,48 @@
+[
+    {
+        "title": "HinarUI",
+        "description": "Original Designed Embedded OLED UI / Continuously advancing",
+        "links": [
+            {
+                "title": "HinarUI / Software Part",
+                "description": "该链接包含 HinarUI 软件部分的详细更新，使用 Github 进行开源托管",
+                "website": "https://github.com/890mn/HinarUI",
+                "image": "github.svg"
+            },
+            {
+                "title": "HinarUI / Hardware Part",
+                "description": "该链接包含 HinarUI 硬件部分的全部更新，使用 立创开源硬件平台 进行开源托管",
+                "website": "https://oshwhub.com/link_joestar/hinarui-open-source-embedded-sel",
+                "image": "lichuang.svg"
+            },
+            {
+                "title": "HinarUI / Shell Part",
+                "description": "该链接包含 HinarUI 外壳部分的全部更新，使用 MakerWorld 进行开源托管 [即将上线]",
+                "website": "",
+                "image": ""
+            }
+        ]
+    },
+    {
+        "title": "人工桌面",
+        "links": [
+            {
+                "title": "夸克云盘",
+                "description": "仅娱乐非商用",
+                "website": "https://pan.quark.cn/s/c85f92a3aed6",
+                "image": "kuake.svg"
+            }
+        ]
+    },
+    {
+        "title": "友链",
+        "links": [
+            {
+                "title": "Trrrrw’s Blog",
+                "description": "Spending a lifetime to taste the love and pain",
+                "website": "https://www.trrw.tech/",
+                "image": "https://www.trrw.tech/favicon.webp"
+            }
+        ]
+    }
+]

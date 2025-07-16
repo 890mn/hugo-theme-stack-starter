@@ -14,3 +14,11 @@ url = "https://space.bilibili.com/45409103"
 
 [social.params]
 icon = "brand-bilibili"
+
+[[social]]
+identifier = "Gmail"
+name = "Gmail"
+url = "mailto:linkjoestar402212@gmail.com"
+
+[social.params]
+icon = "mail"
