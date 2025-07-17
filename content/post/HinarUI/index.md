@@ -39,6 +39,9 @@ It seems to be a little slow because everyday get so busy :(
 - 2024.10.12 | Icon on
 - 2024.10.09 | base on
 
+## 部署教程
+[HinarUI Environment Setting / 工作环境配置](http://link2hinar.fun/p/hinarui_environment/)
+
 ## Postscript
 
 Thanks for u here whatever this project can or not helps you, any problem please use `issue` or contact me by [Gmail](mailto:linkjoestar402212@gmail.com)
