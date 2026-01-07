@@ -39,8 +39,8 @@ type = "links"
 type = "toc"
 
 [colorScheme]
-toggle = true
-default = "auto"
+toggle = false
+default = "dark"
 
 [imageProcessing.cover]
 enabled = true
