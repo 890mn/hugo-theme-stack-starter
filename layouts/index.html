@@ -1,12 +1,14 @@
 {{ define "main" }}
     {{ $heroPage := site.GetPage "post/HinarUI" }}
     {{ $heroImage := "" }}
+    {{ $heroLink := "/post/hinarui/" }}
     {{ with $heroPage }}
+        {{ $heroLink = .RelPermalink }}
         {{ with .Resources.GetMatch "HinarUI.jpg" }}
             {{ $heroImage = .RelPermalink }}
         {{ end }}
     {{ end }}
-    <section class="home-hero"{{ if $heroImage }} style="--home-hero-bg: url('{{ $heroImage }}')"{{ end }}>
+    <section class="home-hero"{{ if $heroImage }} style="--home-hero-bg: url('{{ $heroImage }}')"{{ end }} data-hero-link="{{ $heroLink }}">
         <div class="home-hero__content">
             <h1 class="home-hero__title">HinarUI</h1>
             <p class="home-hero__links">
@@ -23,7 +25,34 @@
                 目前进度：V4 结构与模块持续完善中，下一阶段目标为 1.0 稳定版。
             </p>
         </div>
+        <a class="home-hero__scroll" href="#home-content" aria-label="向下滑动查看更多">
+            <span aria-hidden="true">↓</span>
+        </a>
     </section>
+
+    <section id="home-content" class="article-list">
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $filtered := where $pages "Params.hidden" "!=" true }}
+        {{ $pag := .Paginate ($filtered) }}
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+
+    <script>
+        (() => {
+            const hero = document.querySelector(".home-hero");
+            if (!hero) return;
+            hero.addEventListener("click", (event) => {
+                if (event.target.closest("a")) return;
+                const link = hero.dataset.heroLink;
+                if (link) window.location.href = link;
+            });
+        })();
+    </script>
 {{ end }}
 
 {{ define "right-sidebar" }}
