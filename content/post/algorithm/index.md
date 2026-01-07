@@ -4,6 +4,7 @@ description: some usage of the algorithm
 date: 2025-07-15
 categories: ["C++"]
 tags: ["Algorithm"]
+image: yoru.jpg
 ---
 
 ##  sort
