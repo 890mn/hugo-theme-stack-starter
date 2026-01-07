@@ -1,0 +1,19 @@
+{{ define "body-class" }}article-page keep-sidebar{{ end }}
+{{ define "main" }}
+    {{ partial "article/article.html" . }}
+
+    {{ $hinaruiPosts := where site.RegularPages "Section" "post" }}
+    {{ $hinaruiPosts = where $hinaruiPosts "Params.tags" "intersect" (slice "UI") }}
+
+    {{ if gt (len $hinaruiPosts) 0 }}
+        <section class="article-list--compact">
+            {{ range $hinaruiPosts }}
+                {{ partial "article-list/compact" . }}
+            {{ end }}
+        </section>
+    {{ else }}
+        <p class="article-content">暂无 HinarUI 相关文章。</p>
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
