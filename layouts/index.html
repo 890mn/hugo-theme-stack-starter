@@ -1,29 +1,48 @@
 {{ define "main" }}
-    {{ $heroPage := site.GetPage "post/HinarUI" }}
-    {{ $heroImage := "" }}
-    {{ $heroLink := "/post/hinarui/" }}
-    {{ with $heroPage }}
-        {{ $heroLink = .RelPermalink }}
-        {{ with .Resources.GetMatch "HinarUI.jpg" }}
-            {{ $heroImage = .RelPermalink }}
-        {{ end }}
+    {{ $slides := slice }}
+    {{ with site.GetPage "post/HinarUI" }}
+        {{ $slides = $slides | append . }}
     {{ end }}
-    <section class="home-hero"{{ if $heroImage }} style="--home-hero-bg: url('{{ $heroImage }}')"{{ end }} data-hero-link="{{ $heroLink }}">
-        <div class="home-hero__content">
-            <h1 class="home-hero__title">HinarUI</h1>
-            <p class="home-hero__links">
-                <a href="https://github.com/890mn/HinarUI" target="_blank" rel="noreferrer">GitHub</a>
-                <span class="home-hero__divider">·</span>
-                <a href="https://oshwhub.com/link_joestar/hinarui-open-source-embedded-sel" target="_blank" rel="noreferrer">立创开源社区</a>
-                <span class="home-hero__divider">·</span>
-                <a href="https://makerworld.com.cn/zh/models/1583584-hinarui-shell-v1" target="_blank" rel="noreferrer">BambuLab MakerWorld</a>
-            </p>
-            <p class="home-hero__description">
-                HinarUI 是一套面向嵌入式设备的 OLED UI 设计方案，覆盖软件、硬件与外壳设计，致力于提供可复用、可拓展的完整开源参考。
-            </p>
-            <p class="home-hero__progress">
-                目前进度：V4 结构与模块持续完善中，下一阶段目标为 1.0 稳定版。
-            </p>
+    {{ with site.GetPage "post/Uranus23" }}
+        {{ $slides = $slides | append . }}
+    {{ end }}
+    {{ with site.GetPage "post/algorithm" }}
+        {{ $slides = $slides | append . }}
+    {{ end }}
+
+    <section class="home-hero home-hero--carousel">
+        <div class="home-hero__carousel" data-interval="6000">
+            <button class="home-hero__nav home-hero__nav--prev" type="button" aria-label="上一张">
+                <span aria-hidden="true">←</span>
+            </button>
+            <button class="home-hero__nav home-hero__nav--next" type="button" aria-label="下一张">
+                <span aria-hidden="true">→</span>
+            </button>
+            <div class="home-hero__track">
+                {{ range $index, $page := $slides }}
+                    {{ $image := "" }}
+                    {{ with $page.Params.image }}
+                        {{ with $page.Resources.GetMatch . }}
+                            {{ $image = .RelPermalink }}
+                        {{ end }}
+                    {{ end }}
+                    <article class="home-hero__slide{{ if eq $index 0 }} is-active{{ end }}" data-slide-index="{{ $index }}" data-slide-link="{{ $page.RelPermalink }}"{{ if $image }} style="--slide-bg: url('{{ $image }}')"{{ end }}>
+                        <div class="home-hero__overlay">
+                            <p class="home-hero__eyebrow">精选内容</p>
+                            <h2 class="home-hero__headline">{{ $page.Title }}</h2>
+                            {{ with $page.Params.description }}
+                                <p class="home-hero__summary">{{ . }}</p>
+                            {{ end }}
+                            <span class="home-hero__cta">点击查看 →</span>
+                        </div>
+                    </article>
+                {{ end }}
+            </div>
+            <div class="home-hero__dots" role="tablist" aria-label="精选文章轮播">
+                {{ range $index, $_ := $slides }}
+                    <button class="home-hero__dot{{ if eq $index 0 }} is-active{{ end }}" type="button" aria-label="切换到第 {{ add $index 1 }} 张" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}" data-slide-dot="{{ $index }}"></button>
+                {{ end }}
+            </div>
         </div>
         <a class="home-hero__scroll" href="#home-content" aria-label="向下滑动查看更多">
             <span aria-hidden="true">↓</span>
@@ -44,13 +63,77 @@
 
     <script>
         (() => {
-            const hero = document.querySelector(".home-hero");
-            if (!hero) return;
-            hero.addEventListener("click", (event) => {
-                if (event.target.closest("a")) return;
-                const link = hero.dataset.heroLink;
-                if (link) window.location.href = link;
+            const carousel = document.querySelector(".home-hero__carousel");
+            if (!carousel) return;
+
+            const slides = Array.from(carousel.querySelectorAll(".home-hero__slide"));
+            const dots = Array.from(carousel.querySelectorAll(".home-hero__dot"));
+            const prevButton = carousel.querySelector(".home-hero__nav--prev");
+            const nextButton = carousel.querySelector(".home-hero__nav--next");
+            const interval = Number(carousel.dataset.interval) || 6000;
+            let activeIndex = 0;
+            let timer = null;
+
+            const setActive = (index) => {
+                if (!slides.length) return;
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, idx) => {
+                    slide.classList.toggle("is-active", idx === activeIndex);
+                });
+                dots.forEach((dot, idx) => {
+                    const isActive = idx === activeIndex;
+                    dot.classList.toggle("is-active", isActive);
+                    dot.setAttribute("aria-pressed", isActive ? "true" : "false");
+                });
+            };
+
+            const goNext = () => setActive(activeIndex + 1);
+            const goPrev = () => setActive(activeIndex - 1);
+
+            const stopAuto = () => {
+                if (timer) {
+                    window.clearInterval(timer);
+                    timer = null;
+                }
+            };
+
+            const startAuto = () => {
+                stopAuto();
+                timer = window.setInterval(goNext, interval);
+            };
+
+            slides.forEach((slide) => {
+                slide.addEventListener("click", (event) => {
+                    if (event.target.closest("a, button")) return;
+                    const link = slide.dataset.slideLink;
+                    if (link) window.location.href = link;
+                });
             });
+
+            dots.forEach((dot) => {
+                dot.addEventListener("click", () => {
+                    const index = Number(dot.dataset.slideDot || 0);
+                    setActive(index);
+                    startAuto();
+                });
+            });
+
+            prevButton?.addEventListener("click", (event) => {
+                event.stopPropagation();
+                goPrev();
+                startAuto();
+            });
+
+            nextButton?.addEventListener("click", (event) => {
+                event.stopPropagation();
+                goNext();
+                startAuto();
+            });
+
+            carousel.addEventListener("mouseenter", stopAuto);
+            carousel.addEventListener("mouseleave", startAuto);
+
+            startAuto();
         })();
     </script>
 {{ end }}
