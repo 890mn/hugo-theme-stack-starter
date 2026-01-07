@@ -323,24 +323,24 @@ html {
 }
 
 .home-intro__timeline .timeline__date {
-    font-size: 1rem;
+    font-size: 1.7rem;
     letter-spacing: 0.12em;
     color: rgba(160, 210, 235, 0.75);
 }
 
 .home-intro__timeline .timeline__text {
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: rgba(220, 235, 245, 0.88);
 }
 
 .sidebar-section--hinarui {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     padding: 1rem 0 0;
     border-top: 1px solid rgba(120, 180, 220, 0.2);
 }
 
 .sidebar-section--hinarui .sidebar-section__header {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: rgba(180, 220, 240, 0.7);
@@ -356,7 +356,7 @@ html {
 }
 
 .sidebar-section--hinarui .sidebar-section__header small {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: rgba(140, 200, 230, 0.75);
@@ -373,7 +373,7 @@ html {
 .sidebar-section--hinarui .sidebar-section__list a {
     color: rgba(220, 235, 245, 0.85);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.7rem;
     line-height: 1.4;
     transition: color 0.2s ease;
 }
@@ -385,7 +385,7 @@ html {
 .widget-links__list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1.55rem;
 }
 
 .widget-links__card {
