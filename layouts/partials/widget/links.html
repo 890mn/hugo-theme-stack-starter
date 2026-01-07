@@ -19,8 +19,12 @@
                     </div>
                     <div class="widget-links__icon">
                         {{- $image := $link.image -}}
-                        {{- if and $image (hasPrefix $image "http") -}}
-                            <img src="{{ $image }}" alt="" loading="lazy">
+                        {{- if $image -}}
+                            {{- if hasPrefix $image "http" -}}
+                                <img src="{{ $image }}" alt="" loading="lazy">
+                            {{- else -}}
+                                <img src="{{ printf "img/%s" $image | relURL }}" alt="" loading="lazy">
+                            {{- end -}}
                         {{- else -}}
                             {{ partial "helper/icon" "link" }}
                         {{- end -}}

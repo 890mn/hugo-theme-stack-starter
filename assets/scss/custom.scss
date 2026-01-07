@@ -172,6 +172,7 @@
     border-radius: 12px;
     background: var(--card-background);
     box-shadow: var(--shadow-l1);
+    min-height: 92px;
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -188,26 +189,27 @@
 
 .widget-links__title {
     font-weight: 600;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
 }
 
 .widget-links__description {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--card-text-color-secondary);
     line-height: 1.4;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .widget-links__meta {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--card-text-color-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 .widget-links__icon {
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     display: grid;
     place-items: center;
     color: var(--card-text-color-tertiary);
