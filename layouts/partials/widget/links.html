@@ -6,36 +6,28 @@
         {{ partial "helper/icon" "link" }}
     </div>
     <h2 class="widget-title section-title">Links</h2>
-    {{ range $group := $groups }}
-        <span class="article-list--title">{{ $group.title }}</span>
-        {{ with $group.description }}
-            <p class="widget-links__group-description">{{ . }}</p>
-        {{ end }}
-        <div class="article-list--compact links widget-links__list">
+    <div class="widget-links__list">
+        {{ range $group := $groups }}
             {{ range $link := $group.links }}
-                <article>
-                    <a href="{{ $link.website }}" target="_blank" rel="noopener">
-                        <div class="article-details">
-                            <h2 class="article-title">
-                                {{- $link.title -}}
-                            </h2>
-                            <footer class="article-time">
-                                {{ with $link.description }}
-                                    {{ . }}
-                                {{ else }}
-                                    {{ $link.website }}
-                                {{ end }}
-                            </footer>
-                        </div>
-                        {{ if $link.image }}
-                            <div class="article-image">
-                                <img src="{{ $link.image }}" loading="lazy" data-key="links-{{ $link.website }}">
-                            </div>
+                <a class="widget-links__card" href="{{ $link.website }}" target="_blank" rel="noopener">
+                    <div class="widget-links__content">
+                        <div class="widget-links__title">{{ $link.title }}</div>
+                        {{ with $link.description }}
+                            <div class="widget-links__description">{{ . }}</div>
                         {{ end }}
-                    </a>
-                </article>
+                        <div class="widget-links__meta">{{ $group.title }}</div>
+                    </div>
+                    <div class="widget-links__icon">
+                        {{- $image := $link.image -}}
+                        {{- if and $image (hasPrefix $image "http") -}}
+                            <img src="{{ $image }}" alt="" loading="lazy">
+                        {{- else -}}
+                            {{ partial "helper/icon" "link" }}
+                        {{- end -}}
+                    </div>
+                </a>
             {{ end }}
-        </div>
-    {{ end }}
+        {{ end }}
+    </div>
 </section>
 {{- end -}}
