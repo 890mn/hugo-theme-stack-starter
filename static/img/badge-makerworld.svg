@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="32" role="img" aria-label="MakerWorld 模型页">
+  <title>MakerWorld 模型页</title>
+  <rect width="190" height="32" rx="6" fill="#FFFFFF" stroke="#1B1B1F" stroke-width="1"/>
+  <rect width="190" height="32" rx="6" fill="url(#gradient)" opacity="0.1"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#000000" stop-opacity="0.15" offset="0"/>
+      <stop stop-color="#000000" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <text x="12" y="21" fill="#1B1B1F" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">MakerWorld</text>
+  <text x="120" y="21" fill="#1B1B1F" font-family="'Segoe UI', Arial, sans-serif" font-size="12">Shell V1</text>
+</svg>
