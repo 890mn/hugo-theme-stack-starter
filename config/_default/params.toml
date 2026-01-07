@@ -27,12 +27,6 @@ readingTime = true
 type = "search"
 
 [[widgets.homepage]]
-type = "categories"
-
-[widgets.homepage.params]
-limit = 10
-
-[[widgets.homepage]]
 type = "tag-cloud"
 
 [widgets.homepage.params]

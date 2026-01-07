@@ -6,18 +6,36 @@
         {{ partial "helper/icon" "link" }}
     </div>
     <h2 class="widget-title section-title">Links</h2>
-    <div class="widget-links__list">
-        {{ range $group := $groups }}
-            {{ range $link := $group.links }}
-                <a class="widget-links__card" href="{{ $link.website }}" target="_blank" rel="noopener">
-                    <div class="widget-links__title">{{ $link.title }}</div>
-                    {{ with $link.description }}
-                        <div class="widget-links__description">{{ . }}</div>
-                    {{ end }}
-                    <div class="widget-links__meta">{{ $group.title }}</div>
-                </a>
-            {{ end }}
+    {{ range $group := $groups }}
+        <span class="article-list--title">{{ $group.title }}</span>
+        {{ with $group.description }}
+            <p class="widget-links__group-description">{{ . }}</p>
         {{ end }}
-    </div>
+        <div class="article-list--compact links widget-links__list">
+            {{ range $link := $group.links }}
+                <article>
+                    <a href="{{ $link.website }}" target="_blank" rel="noopener">
+                        <div class="article-details">
+                            <h2 class="article-title">
+                                {{- $link.title -}}
+                            </h2>
+                            <footer class="article-time">
+                                {{ with $link.description }}
+                                    {{ . }}
+                                {{ else }}
+                                    {{ $link.website }}
+                                {{ end }}
+                            </footer>
+                        </div>
+                        {{ if $link.image }}
+                            <div class="article-image">
+                                <img src="{{ $link.image }}" loading="lazy" data-key="links-{{ $link.website }}">
+                            </div>
+                        {{ end }}
+                    </a>
+                </article>
+            {{ end }}
+        </div>
+    {{ end }}
 </section>
 {{- end -}}
