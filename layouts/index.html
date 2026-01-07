@@ -1,0 +1,99 @@
+{{ define "main" }}
+    {{ $slides := slice (site.GetPage "post/HinarUI") (site.GetPage "post/Uranus23") (site.GetPage "post/algorithm") }}
+    <section class="home-hero home-hero--carousel" data-interval="6000">
+        <div class="home-hero__track">
+            {{ range $index, $page := $slides }}
+                {{ if $page }}
+                    {{ $image := "" }}
+                    {{ with $page.Params.image }}
+                        {{ with $page.Resources.GetMatch . }}
+                            {{ $image = .RelPermalink }}
+                        {{ end }}
+                    {{ end }}
+                    <article class="home-hero__slide{{ if eq $index 0 }} is-active{{ end }}"{{ if $image }} style="--home-hero-bg: url('{{ $image }}')"{{ end }}>
+                        <a class="home-hero__slide-link" href="{{ $page.RelPermalink }}">
+                            <div class="home-hero__content">
+                                <p class="home-hero__eyebrow">{{ $page.Params.categories | first | default "Featured" }}</p>
+                                <h2 class="home-hero__title">{{ $page.Title }}</h2>
+                                {{ with $page.Params.description }}
+                                    <p class="home-hero__description">{{ . }}</p>
+                                {{ else }}
+                                    <p class="home-hero__description">{{ $page.Summary }}</p>
+                                {{ end }}
+                                <span class="home-hero__cta">进入阅读 →</span>
+                            </div>
+                        </a>
+                    </article>
+                {{ end }}
+            {{ end }}
+        </div>
+        <button class="home-hero__nav home-hero__nav--prev" type="button" aria-label="上一张">‹</button>
+        <button class="home-hero__nav home-hero__nav--next" type="button" aria-label="下一张">›</button>
+        <a class="home-hero__scroll" href="#home-content" aria-label="向下滑动查看更多">
+            <span aria-hidden="true">↓</span>
+        </a>
+    </section>
+
+    <section id="home-content" class="article-list">
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $filtered := where $pages "Params.hidden" "!=" true }}
+        {{ $pag := .Paginate ($filtered) }}
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+
+    <script>
+        (() => {
+            const hero = document.querySelector(".home-hero--carousel");
+            if (!hero) return;
+            const slides = Array.from(hero.querySelectorAll(".home-hero__slide"));
+            const prev = hero.querySelector(".home-hero__nav--prev");
+            const next = hero.querySelector(".home-hero__nav--next");
+            const interval = Number(hero.dataset.interval) || 6000;
+            let index = 0;
+            let timer = null;
+
+            const setActive = (nextIndex) => {
+                slides[index]?.classList.remove("is-active");
+                index = (nextIndex + slides.length) % slides.length;
+                slides[index]?.classList.add("is-active");
+            };
+
+            const start = () => {
+                if (slides.length < 2) return;
+                timer = window.setInterval(() => {
+                    setActive(index + 1);
+                }, interval);
+            };
+
+            const stop = () => {
+                if (timer) window.clearInterval(timer);
+            };
+
+            prev?.addEventListener("click", () => {
+                stop();
+                setActive(index - 1);
+                start();
+            });
+
+            next?.addEventListener("click", () => {
+                stop();
+                setActive(index + 1);
+                start();
+            });
+
+            hero.addEventListener("mouseenter", stop);
+            hero.addEventListener("mouseleave", start);
+
+            start();
+        })();
+    </script>
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
