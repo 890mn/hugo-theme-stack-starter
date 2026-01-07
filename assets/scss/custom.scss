@@ -268,3 +268,25 @@
     line-height: 1.4;
     margin-bottom: 0.6rem;
 }
+
+.widget-links__meta {
+    font-size: 1.0rem;
+    color: var(--card-text-color-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.widget-links__icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    color: var(--card-text-color-tertiary);
+    flex-shrink: 0;
+}
+
+.widget-links__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
