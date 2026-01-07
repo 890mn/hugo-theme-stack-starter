@@ -22,7 +22,7 @@
                         {{- if $image -}}
                             <img src="{{ $image | relURL }}" alt="" loading="lazy">
                         {{- else -}}
-                            {{ partial "helper/icon" "link" }}
+                            <img src="{{ $link.image }}" loading="lazy" data-key="links-{{ $link.website }}">
                         {{- end -}}
                     </div>
                 </a>
