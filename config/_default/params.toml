@@ -27,12 +27,6 @@ readingTime = true
 type = "search"
 
 [[widgets.homepage]]
-type = "archives"
-
-[widgets.homepage.params]
-limit = 5
-
-[[widgets.homepage]]
 type = "categories"
 
 [widgets.homepage.params]
@@ -43,6 +37,9 @@ type = "tag-cloud"
 
 [widgets.homepage.params]
 limit = 10
+
+[[widgets.homepage]]
+type = "links"
 
 [[widgets.page]]
 type = "toc"

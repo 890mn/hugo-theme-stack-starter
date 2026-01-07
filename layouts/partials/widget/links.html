@@ -1,0 +1,23 @@
+{{- $context := .Context -}}
+{{- $groups := $context.Site.Data.links -}}
+{{- if $groups -}}
+<section class="widget widget-links">
+    <div class="widget-icon">
+        {{ partial "helper/icon" "link" }}
+    </div>
+    <h2 class="widget-title section-title">Links</h2>
+    <div class="widget-links__list">
+        {{ range $group := $groups }}
+            {{ range $link := $group.links }}
+                <a class="widget-links__card" href="{{ $link.website }}" target="_blank" rel="noopener">
+                    <div class="widget-links__title">{{ $link.title }}</div>
+                    {{ with $link.description }}
+                        <div class="widget-links__description">{{ . }}</div>
+                    {{ end }}
+                    <div class="widget-links__meta">{{ $group.title }}</div>
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{- end -}}
