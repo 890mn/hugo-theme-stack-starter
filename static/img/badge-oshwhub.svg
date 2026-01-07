@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="32" role="img" aria-label="立创开源社区项目主页">
+  <title>立创开源社区项目主页</title>
+  <rect width="210" height="32" rx="6" fill="#4672F5"/>
+  <rect width="210" height="32" rx="6" fill="url(#gradient)" opacity="0.16"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#ffffff" stop-opacity="0.6" offset="0"/>
+      <stop stop-color="#ffffff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <text x="12" y="21" fill="#F6F8FF" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">立创开源社区</text>
+  <text x="120" y="21" fill="#F6F8FF" font-family="'Segoe UI', Arial, sans-serif" font-size="12">HinarUI 项目页</text>
+</svg>

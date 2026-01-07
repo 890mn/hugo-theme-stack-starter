@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="32" role="img" aria-label="Bilibili profile">
+  <title>Bilibili profile</title>
+  <rect width="150" height="32" rx="6" fill="#EE979F"/>
+  <rect width="150" height="32" rx="6" fill="url(#gradient)" opacity="0.14"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#ffffff" stop-opacity="0.6" offset="0"/>
+      <stop stop-color="#ffffff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <text x="12" y="21" fill="#1C0F22" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Bilibili</text>
+  <text x="90" y="21" fill="#1C0F22" font-family="'Segoe UI', Arial, sans-serif" font-size="12">@link_joestar</text>
+</svg>
