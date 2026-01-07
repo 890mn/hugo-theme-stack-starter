@@ -1,0 +1,60 @@
+{{ define "main" }}
+    {{ $heroPage := site.GetPage "post/HinarUI" }}
+    {{ $heroImage := "" }}
+    {{ $heroLink := "/post/hinarui/" }}
+    {{ with $heroPage }}
+        {{ $heroLink = .RelPermalink }}
+        {{ with .Resources.GetMatch "HinarUI.jpg" }}
+            {{ $heroImage = .RelPermalink }}
+        {{ end }}
+    {{ end }}
+    <section class="home-hero"{{ if $heroImage }} style="--home-hero-bg: url('{{ $heroImage }}')"{{ end }} data-hero-link="{{ $heroLink }}">
+        <div class="home-hero__content">
+            <h1 class="home-hero__title">HinarUI</h1>
+            <p class="home-hero__links">
+                <a href="https://github.com/890mn/HinarUI" target="_blank" rel="noreferrer">GitHub</a>
+                <span class="home-hero__divider">·</span>
+                <a href="https://oshwhub.com/link_joestar/hinarui-open-source-embedded-sel" target="_blank" rel="noreferrer">立创开源社区</a>
+                <span class="home-hero__divider">·</span>
+                <a href="https://makerworld.com.cn/zh/models/1583584-hinarui-shell-v1" target="_blank" rel="noreferrer">BambuLab MakerWorld</a>
+            </p>
+            <p class="home-hero__description">
+                HinarUI 是一套面向嵌入式设备的 OLED UI 设计方案，覆盖软件、硬件与外壳设计，致力于提供可复用、可拓展的完整开源参考。
+            </p>
+            <p class="home-hero__progress">
+                目前进度：V4 结构与模块持续完善中，下一阶段目标为 1.0 稳定版。
+            </p>
+        </div>
+        <a class="home-hero__scroll" href="#home-content" aria-label="向下滑动查看更多">
+            <span aria-hidden="true">↓</span>
+        </a>
+    </section>
+
+    <section id="home-content" class="article-list">
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ $filtered := where $pages "Params.hidden" "!=" true }}
+        {{ $pag := .Paginate ($filtered) }}
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+
+    <script>
+        (() => {
+            const hero = document.querySelector(".home-hero");
+            if (!hero) return;
+            hero.addEventListener("click", (event) => {
+                if (event.target.closest("a")) return;
+                const link = hero.dataset.heroLink;
+                if (link) window.location.href = link;
+            });
+        })();
+    </script>
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
