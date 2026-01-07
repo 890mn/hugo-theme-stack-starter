@@ -13,10 +13,10 @@
     <section class="home-hero home-hero--carousel">
         <div class="home-hero__carousel" data-interval="6000">
             <button class="home-hero__nav home-hero__nav--prev" type="button" aria-label="上一张">
-                <span aria-hidden="true">←</span>
+                <span aria-hidden="true">&lt;</span>
             </button>
             <button class="home-hero__nav home-hero__nav--next" type="button" aria-label="下一张">
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true">&gt;</span>
             </button>
             <div class="home-hero__track">
                 {{ range $index, $page := $slides }}
@@ -44,21 +44,31 @@
                 {{ end }}
             </div>
         </div>
-        <a class="home-hero__scroll" href="#home-content" aria-label="向下滑动查看更多">
-            <span aria-hidden="true">↓</span>
-        </a>
     </section>
 
-    <section id="home-content" class="article-list">
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-        {{ $filtered := where $pages "Params.hidden" "!=" true }}
-        {{ $pag := .Paginate ($filtered) }}
-        {{ range $index, $element := $pag.Pages }}
-            {{ partial "article-list/default" . }}
-        {{ end }}
+    <section id="home-content" class="home-intro">
+        <div class="home-intro__card">
+            <p class="home-intro__eyebrow">本站概览</p>
+            <h2 class="home-intro__title">HinarHere · 归档与灵感</h2>
+            <p class="home-intro__text">
+                这里收录 HinarUI 的项目进展、天王星 23° 的文字故事，以及 C++ 算法笔记。整体风格将持续向「深色·静谧」方向优化。
+            </p>
+        </div>
+        <div class="home-intro__card">
+            <p class="home-intro__eyebrow">主题设定</p>
+            <h2 class="home-intro__title">天王星 23° · 蓝绿色浪涌</h2>
+            <p class="home-intro__text">
+                主页背景基于天王星的蓝绿色浪涌构想而来，后续会继续补充更完整的视觉叙事与交互。
+            </p>
+        </div>
+        <div class="home-intro__card">
+            <p class="home-intro__eyebrow">后续计划</p>
+            <h2 class="home-intro__title">内容规划</h2>
+            <p class="home-intro__text">
+                接下来将完善卡片样式、导航体验与专题整理，让主页成为内容索引与情绪氛围的入口。
+            </p>
+        </div>
     </section>
-
-    {{- partial "pagination.html" . -}}
     {{- partial "footer/footer" . -}}
 
     <script>
