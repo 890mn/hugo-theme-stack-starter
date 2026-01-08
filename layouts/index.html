@@ -50,41 +50,45 @@
     <section id="home-content" class="home-intro">
         <div class="home-intro__wrap">
             <div class="home-intro__content">
-                <p class="home-intro__title">「 Uranus23°」</p>
-                <ul class="home-intro__timeline">
-                    <li>
-                        <span class="timeline__date">2024.03.29</span>
-                        <span class="timeline__text">Server Start...</span>
-                    </li>
-                    <li>
-                        <span class="timeline__date">2024.03.29</span>
-                        <span class="timeline__text">link2hinar.fun Start...</span>
-                    </li>
-                    <li>
-                        <span class="timeline__date">2024.09.29</span>
-                        <span class="timeline__text">HinarUI Start...</span>
-                    </li>
-                    <li>
-                        <span class="timeline__date">2025.12.02</span>
-                        <span class="timeline__text">HinarUI V4 Complete...</span>
-                    </li>
-                    <li class="is-current">
-                        <span class="timeline__date">2026</span>
-                        <span class="timeline__text">2 The Future</span>
-                    </li>
-                </ul>
-                <p class="home-intro__meta">
-                    Theme |
-                    {{ if $uranus }}
-                        <a href="{{ $uranus.RelPermalink }}">background story</a>
-                    {{ else }}
-                        background story
-                    {{ end }}
-                    | Designed By Hinar
-                </p>
-            </div>
-            <div class="home-intro__media">
-                <img src="/images/HinarUI_Back.png" alt="HinarUI 视觉背景" loading="lazy">
+                <div class="home-intro__header">
+                    <p class="home-intro__title">「 Uranus23°」</p>
+                    <p class="home-intro__meta">
+                        Theme |
+                        {{ if $uranus }}
+                            <a href="{{ $uranus.RelPermalink }}">background story</a>
+                        {{ else }}
+                            background story
+                        {{ end }}
+                        | Designed By Hinar
+                    </p>
+                </div>
+                <div class="home-intro__row">
+                    <ul class="home-intro__timeline">
+                        <li data-planet="Mars">
+                            <span class="timeline__date">2024.03.29</span>
+                            <span class="timeline__text">Server Start...</span>
+                        </li>
+                        <li data-planet="Jupiter">
+                            <span class="timeline__date">2024.03.29</span>
+                            <span class="timeline__text">link2hinar.fun Start...</span>
+                        </li>
+                        <li data-planet="Saturn">
+                            <span class="timeline__date">2024.09.29</span>
+                            <span class="timeline__text">HinarUI Start...</span>
+                        </li>
+                        <li data-planet="Neptune">
+                            <span class="timeline__date">2025.12.02</span>
+                            <span class="timeline__text">HinarUI V4 Complete...</span>
+                        </li>
+                        <li class="is-current" data-planet="Uranus">
+                            <span class="timeline__date">2026</span>
+                            <span class="timeline__text">2 The Future</span>
+                        </li>
+                    </ul>
+                    <div class="home-intro__media">
+                        <img src="/images/HinarUI_Back.png" alt="HinarUI 视觉背景" loading="lazy">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
