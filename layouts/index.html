@@ -28,7 +28,7 @@
                     {{ end }}
                     <article class="home-hero__slide{{ if eq $index 0 }} is-active{{ end }}" data-slide-index="{{ $index }}" data-slide-link="{{ $page.RelPermalink }}"{{ if $image }} style="--slide-bg: url('{{ $image }}')"{{ end }}>
                         <div class="home-hero__overlay">
-                            <p class="home-hero__eyebrow">精选内容</p>
+                            <p class="home-hero__eyebrow">WeLcome</p>
                             <h2 class="home-hero__headline">{{ $page.Title }}</h2>
                             {{ with $page.Params.description }}
                                 <p class="home-hero__summary">{{ . }}</p>
@@ -51,7 +51,7 @@
         <div class="home-intro__wrap">
             <p class="home-intro__title">天王星23°</p>
             <p class="home-intro__meta">
-                Themes | Homepage |
+                Link-To-Hinar | Future |
                 {{ if $uranus }}
                     <a href="{{ $uranus.RelPermalink }}">background story</a>
                 {{ else }}
