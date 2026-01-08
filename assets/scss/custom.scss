@@ -297,7 +297,8 @@ html {
     flex-direction: column;
     gap: 0.9rem;
     flex: 1;
-    min-width: min(100%, 320px);
+    min-width: 0;
+    max-width: 100%;
 }
 
 .home-intro__title {
