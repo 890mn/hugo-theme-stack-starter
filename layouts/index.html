@@ -50,9 +50,6 @@
     <section id="home-content" class="home-intro">
         <div class="home-intro__wrap">
             <div class="home-intro__content">
-                <div class="home-intro__header">
-                    <p class="home-intro__title">「 Uranus23°」</p>
-                </div>
                 <div class="home-intro__row">
                     <ul class="home-intro__timeline">
                         <li data-planet="mars">
@@ -80,15 +77,18 @@
                         <img src="/images/HinarUI_Back.png" alt="HinarUI 视觉背景" loading="lazy">
                     </div>
                 </div>
-                <p class="home-intro__meta">
-                    Theme |
-                    {{ if $uranus }}
-                        <a href="{{ $uranus.RelPermalink }}">background story</a>
-                    {{ else }}
-                        background story
-                    {{ end }}
-                    | Designed By Hinar
-                </p>
+                <div class="home-intro__header">
+                    <p class="home-intro__title">「 Uranus23°」</p>
+                    <p class="home-intro__meta">
+                        Theme |
+                        {{ if $uranus }}
+                            <a href="{{ $uranus.RelPermalink }}">background story</a>
+                        {{ else }}
+                            background story
+                        {{ end }}
+                        | Designed By Hinar
+                    </p>
+                </div>
             </div>
         </div>
     </section>
