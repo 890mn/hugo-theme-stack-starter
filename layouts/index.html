@@ -51,15 +51,6 @@
         <div class="home-intro__wrap">
             <div class="home-intro__content">
                 <p class="home-intro__title">「 Uranus23°」</p>
-                <p class="home-intro__meta">
-                    Theme |
-                    {{ if $uranus }}
-                        <a href="{{ $uranus.RelPermalink }}">background story</a>
-                    {{ else }}
-                        background story
-                    {{ end }}
-                    | Designed By Hinar
-                </p>
                 <ul class="home-intro__timeline">
                     <li>
                         <span class="timeline__date">2024.03.29</span>
@@ -82,6 +73,15 @@
                         <span class="timeline__text">2 The Future</span>
                     </li>
                 </ul>
+                <p class="home-intro__meta">
+                    Theme |
+                    {{ if $uranus }}
+                        <a href="{{ $uranus.RelPermalink }}">background story</a>
+                    {{ else }}
+                        background story
+                    {{ end }}
+                    | Designed By Hinar
+                </p>
             </div>
             <div class="home-intro__media">
                 <img src="/images/HinarUI_Back.png" alt="HinarUI 视觉背景" loading="lazy">

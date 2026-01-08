@@ -295,7 +295,7 @@ html {
 .home-intro__content {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 1rem;
     flex: 1;
     min-width: 0;
     max-width: 100%;
@@ -312,12 +312,14 @@ html {
 }
 
 .home-intro__meta {
-    font-size: 1.3rem;
-    letter-spacing: 0.06em;
-    color: rgba(171, 204, 220, 0.88);
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    color: rgba(185, 216, 232, 0.92);
     text-transform: none;
     margin: 0;
     line-height: 1.7;
+    padding-left: 0.4rem;
+    border-left: 2px solid rgba(120, 190, 230, 0.5);
 }
 
 .home-intro__meta a {
@@ -334,11 +336,36 @@ html {
 
 .home-intro__timeline {
     list-style: none;
-    margin: 1.2rem 0 0;
-    padding: 0 0 0 1.2rem;
+    margin: 1.2rem 0 0.2rem;
+    padding: 0.4rem 0 0.4rem 1.4rem;
     display: grid;
-    gap: 1.15rem;
-    border-left: 1px solid rgba(120, 180, 220, 0.32);
+    gap: 1.25rem;
+    border-left: 2px solid rgba(120, 200, 240, 0.6);
+    position: relative;
+}
+
+.home-intro__timeline::before {
+    content: "";
+    position: absolute;
+    left: -0.35rem;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, rgba(110, 200, 255, 0.1), rgba(120, 200, 255, 0.6), rgba(80, 120, 200, 0.1));
+    filter: blur(6px);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.home-intro__timeline::after {
+    content: "";
+    position: absolute;
+    inset: -0.4rem 0 -0.4rem -1.1rem;
+    border: 1px dashed rgba(120, 200, 240, 0.35);
+    border-right: none;
+    border-radius: 16px;
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .home-intro__timeline li {
@@ -350,36 +377,41 @@ html {
 .home-intro__timeline li::before {
     content: "";
     position: absolute;
-    left: -1.33rem;
-    top: 0.45rem;
-    width: 0.6rem;
-    height: 0.6rem;
+    left: -1.45rem;
+    top: 0.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 999px;
-    background: rgba(140, 210, 240, 0.85);
-    box-shadow: 0 0 0 4px rgba(30, 60, 80, 0.35), 0 0 18px rgba(120, 200, 240, 0.4);
+    background: radial-gradient(circle, rgba(180, 230, 255, 0.95) 0%, rgba(80, 160, 220, 0.95) 55%, rgba(40, 110, 180, 0.9) 100%);
+    box-shadow:
+        0 0 0 5px rgba(30, 70, 110, 0.45),
+        0 0 26px rgba(120, 210, 255, 0.45);
 }
 
 .home-intro__timeline .timeline__date {
     font-size: 1.7rem;
     letter-spacing: 0.08em;
-    color: rgba(160, 210, 235, 0.78);
+    color: rgba(170, 220, 245, 0.86);
+    font-weight: 600;
 }
 
 .home-intro__timeline .timeline__text {
     font-size: 2.05rem;
     color: rgba(220, 235, 245, 0.88);
+    letter-spacing: 0.03em;
 }
 
 .home-intro__timeline li.is-current::before {
-    background: rgba(255, 210, 120, 0.95);
+    background: radial-gradient(circle, rgba(255, 236, 200, 0.98) 0%, rgba(255, 198, 130, 0.95) 60%, rgba(200, 120, 60, 0.92) 100%);
     box-shadow:
-        0 0 0 4px rgba(70, 50, 20, 0.4),
-        0 0 20px rgba(255, 190, 120, 0.6);
+        0 0 0 5px rgba(80, 60, 30, 0.45),
+        0 0 28px rgba(255, 210, 140, 0.7);
 }
 
 .home-intro__timeline li.is-current .timeline__date,
 .home-intro__timeline li.is-current .timeline__text {
     color: rgba(255, 224, 170, 0.95);
+    text-shadow: 0 0 16px rgba(255, 205, 140, 0.6);
 }
 
 .home-intro__media {
@@ -395,6 +427,7 @@ html {
     width: 100%;
     height: auto;
     object-fit: contain;
+    max-height: clamp(160px, 20vw, 260px);
     filter: drop-shadow(0 16px 30px rgba(10, 20, 30, 0.5));
     opacity: 0.92;
 }
