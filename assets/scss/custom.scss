@@ -1,6 +1,12 @@
 /*
 参考链接：https://www.trrw.tech/p/stack%E4%B8%BB%E9%A2%98%E5%8F%8B%E9%93%BE%E9%A1%B5%E9%9D%A2%E7%BE%8E%E5%8C%96/
 */
+
+:root[data-theme="dark"],
+:root[data-scheme="dark"] {
+    --card-background: rgba(26, 35, 39, 0.86);
+}
+
 @media (min-width: 1024px) {
     .article-list--compact.links {
         display: grid;
@@ -27,6 +33,14 @@
             }
         }
     }
+}
+
+.article-list--compact article,
+.article-list--compact .article-list--item,
+.widget,
+.section,
+.widget-links__card {
+    background: var(--card-background);
 }
 
 .article-list--title {
@@ -210,30 +224,37 @@
 }
 
 body {
-    background:
-        radial-gradient(circle at 15% 20%, rgba(80, 200, 220, 0.25), transparent 55%),
-        radial-gradient(circle at 85% 15%, rgba(35, 120, 200, 0.35), transparent 45%),
-        radial-gradient(circle at 60% 80%, rgba(20, 90, 140, 0.5), transparent 60%),
-        linear-gradient(180deg, rgba(6, 16, 30, 0.98), rgba(4, 8, 18, 0.98));
+    background-image:
+        linear-gradient(335deg,
+            rgba(51, 69, 90, 0) 0%,
+            rgba(45, 76, 87, 0.25) 47%,
+            rgba(52, 53, 62, 0.95) 80%,
+            rgb(47, 57, 65) 100%),
+        url("/images/uranus23S.png");
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: rgba(8, 16, 24, 0.98);
+    color: rgba(168, 204, 161, 0.92);
 }
 
 html {
     color-scheme: dark;
-    scrollbar-color: rgba(80, 170, 220, 0.55) rgba(6, 14, 26, 0.9);
+    scrollbar-color: rgba(80, 171, 220, 0.73) rgba(6, 14, 26, 0.9);
 }
 
 * {
-    scrollbar-width: thin;
+    scrollbar-width: none;
 }
 
 *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 0px;
+    height: 0px;
 }
 
 *::-webkit-scrollbar-track {
-    background: rgba(6, 14, 26, 0.9);
+    background: rgba(0, 0, 0, 0);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -249,7 +270,7 @@ html {
 .article-list--title,
 .widget-title,
 .section-title {
-    color: rgba(210, 235, 250, 0.9);
+    color: rgba(207, 225, 240, 0.9);
 }
 
 .widget,
@@ -273,26 +294,30 @@ html {
 .home-intro__title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 700;
-    color: rgba(240, 250, 255, 0.96);
+    color: rgba(232, 242, 250, 0.96);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     margin: 0;
 }
 
 .home-intro__meta {
-    font-size: 1.25rem;
-    letter-spacing: 0.08em;
-    color: rgba(200, 225, 240, 0.78);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: rgba(151, 187, 204, 0.88);
+    text-transform: uppercase;
     margin: 0;
 }
 
 .home-intro__meta a {
-    color: rgba(130, 210, 255, 0.95);
+    color: rgba(154, 207, 230, 0.95);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .home-intro__meta a:hover {
-    border-color: rgba(130, 210, 255, 0.85);
+    color: rgba(192, 226, 242, 0.98);
+    border-color: rgba(154, 207, 230, 0.9);
 }
 
 .home-intro__timeline {
