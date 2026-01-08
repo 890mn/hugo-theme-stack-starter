@@ -1,6 +1,12 @@
 /*
 参考链接：https://www.trrw.tech/p/stack%E4%B8%BB%E9%A2%98%E5%8F%8B%E9%93%BE%E9%A1%B5%E9%9D%A2%E7%BE%8E%E5%8C%96/
 */
+
+:root[data-theme="dark"],
+:root[data-scheme="dark"] {
+    --card-background: rgba(26, 35, 39, 0.86);
+}
+
 @media (min-width: 1024px) {
     .article-list--compact.links {
         display: grid;
@@ -27,6 +33,14 @@
             }
         }
     }
+}
+
+.article-list--compact article,
+.article-list--compact .article-list--item,
+.widget,
+.section,
+.widget-links__card {
+    background: var(--card-background);
 }
 
 .article-list--title {
@@ -211,36 +225,36 @@
 
 body {
     background-image:
-        linear-gradient(315deg,
+        linear-gradient(335deg,
             rgba(51, 69, 90, 0) 0%,
-            rgba(45, 76, 87, 0.2) 30%,
-            rgba(67, 69, 107, 0.58) 55%,
-            rgba(45, 76, 87, 0.86) 75%,
-            rgba(51, 69, 90, 0.9) 100%),
-        url("/images/uranus23-bg.jpg");
+            rgba(45, 76, 87, 0.25) 47%,
+            rgba(52, 53, 62, 0.95) 80%,
+            rgb(47, 57, 65) 100%),
+        url("/images/uranus23S.png");
     background-size: cover;
-    background-position: right center;
+    background-position: left center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: rgba(8, 16, 24, 0.98);
+    color: rgba(168, 204, 161, 0.92);
 }
 
 html {
     color-scheme: dark;
-    scrollbar-color: rgba(80, 170, 220, 0.55) rgba(6, 14, 26, 0.9);
+    scrollbar-color: rgba(80, 171, 220, 0.73) rgba(6, 14, 26, 0.9);
 }
 
 * {
-    scrollbar-width: thin;
+    scrollbar-width: none;
 }
 
 *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 0px;
+    height: 0px;
 }
 
 *::-webkit-scrollbar-track {
-    background: rgba(6, 14, 26, 0.9);
+    background: rgba(0, 0, 0, 0);
 }
 
 *::-webkit-scrollbar-thumb {
