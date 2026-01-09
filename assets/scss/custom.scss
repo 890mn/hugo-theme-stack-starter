@@ -590,3 +590,58 @@ html {
     height: 100%;
     object-fit: contain;
 }
+
+.template-archives header {
+    margin-bottom: 2.4rem;
+    padding: 1.6rem 1.8rem;
+    border-radius: 18px;
+    background: var(--card-background);
+    box-shadow: var(--shadow-l1);
+    backdrop-filter: blur(8px);
+}
+
+.template-archives header .section-title {
+    margin-bottom: 1.2rem;
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+}
+
+.template-archives .archives-group {
+    margin: 2.4rem 0;
+    padding: 1.6rem 1.8rem 1.9rem;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(18, 30, 45, 0.72), rgba(12, 18, 30, 0.9));
+    box-shadow: var(--shadow-l1);
+    border: 1px solid rgba(90, 140, 190, 0.2);
+}
+
+.template-archives .archives-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 2.1rem;
+    margin-bottom: 1.4rem;
+}
+
+.template-archives .archives-date::before {
+    content: "";
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: rgba(160, 220, 255, 0.9);
+    box-shadow: 0 0 12px rgba(120, 200, 255, 0.8);
+}
+
+.template-archives .article-list--compact {
+    gap: 0.4rem;
+}
+
+.template-archives .article-list--compact article {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.template-archives .article-list--compact article:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-l2);
+}
