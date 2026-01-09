@@ -5,6 +5,7 @@ date: 2025-09-19 02:00:00+0000
 categories: ["Embedded Develop"]
 tags: ["HinarUI", "UI"]
 image: HinarUI.jpg
+weight: -10
 ---
 
 ![Bilibili](https://img.shields.io/badge/Bilibili-EE979F?link=https%3A%2F%2Fspace.bilibili.com%2F45409103)
@@ -13,9 +14,20 @@ image: HinarUI.jpg
 ![GitHub last commit](https://img.shields.io/github/last-commit/890mn/HinarUI?labelColor=%2339354A&color=%239BB9B4)
 ![Static Badge](https://img.shields.io/github/v/release/890mn/HinarUI?color=%23263C53)
 
-Original OLED UI Design based on Embedded Platform, with complete software, hardware and shell design.
+HinarUI 是一套面向嵌入式设备的原创 OLED UI 方案，包含软件框架、硬件电路与外壳设计。我希望它不仅“能显示”，还要可维护、可扩展、可复制，这也是它从 V1 演进到 V4 的核心动机。
 
-基于嵌入式平台的原创 OLED UI 设计，包含软硬件与外壳方案
+## 项目说明
+
+- **完整设计链路**：从 UI 交互逻辑到 PCB 与外壳，形成可复用的整体方案。
+- **移植友好**：支持不同 MCU 平台，提供清晰的接口与配置组织方式。
+- **轻量但可扩展**：基础功能简洁，方便按项目需求增加模块与动画。
+- **可持续迭代**：以版本节奏推进，重点在稳定性与工程可落地性。
+
+## 快速入口
+
+- **环境配置与烧录**：完成基础工具与构建配置。
+- **原生 PCB 部署**：适配官方 PCB 的标准部署流程。
+- **自定义 MCU 部署**：以仓库中的定义为模板进行移植。
 
 ## Current Status
 
@@ -40,7 +52,10 @@ Original OLED UI Design based on Embedded Platform, with complete software, hard
 - 2024.10.09 | base on
 
 ## 部署教程
-[HinarUI / 环境配置及烧录](http://link2hinar.fun/p/hinarui_environment/)
+
+- [HinarUI / 环境配置及烧录](http://link2hinar.fun/p/hinarui_environment/)
+- [HinarUI / 原生PCB部署配置](http://link2hinar.fun/p/hinarui_pcb_deploy/)
+- [HinarUI / 自定义MCU部署配置](http://link2hinar.fun/p/hinarui_custom_mcu_deploy/)
 
 ## 资源下载
 首页右侧链接即可获取

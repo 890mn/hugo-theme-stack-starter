@@ -104,6 +104,7 @@
     {{ $hinaruiZone := .Site.GetPage "page/hinarui" }}
     {{ $hinaruiPosts := where .Site.RegularPages "Section" "post" }}
     {{ $hinaruiPosts = where $hinaruiPosts "Params.tags" "intersect" (slice "HinarUI") }}
+    {{ $hinaruiPosts = $hinaruiPosts.ByWeight }}
     {{ if gt (len $hinaruiPosts) 0 }}
         <section class="sidebar-section sidebar-section--hinarui">
             <header class="sidebar-section__header">

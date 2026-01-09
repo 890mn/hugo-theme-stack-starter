@@ -4,6 +4,7 @@ description: 参考 GitHub 中现有定义整理的自定义 MCU 适配说明
 date: 2025-01-09 00:00:00+0000
 categories: ["Embedded Develop"]
 tags: ["HinarUI", "MCU"]
+weight: 20
 ---
 
 在 HinarUI 的移植实践里，最核心的事情不是“写更多代码”，而是把现有定义吃透并保持结构一致。下面的流程是我在替换 MCU 时整理出的可复用经验，强调可验证、可回滚，方便你在项目里真正落地。
