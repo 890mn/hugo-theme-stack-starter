@@ -1,5 +1,5 @@
 ---
-title: HinarUI
+title: HinarUI / Introduction
 description: Original Designed Embedded OLED UI V4
 date: 2025-09-19 02:00:00+0000
 categories: ["Embedded Develop"]
@@ -40,10 +40,10 @@ Original OLED UI Design based on Embedded Platform, with complete software, hard
 - 2024.10.09 | base on
 
 ## 部署教程
-[HinarUI Environment Setting / 工作环境配置](http://link2hinar.fun/p/hinarui_environment/)
+[HinarUI / 环境配置及烧录](http://link2hinar.fun/p/hinarui_environment/)
 
 ## 资源下载
-前往 -> [https://link2hinar.fun/links/](https://link2hinar.fun/links/)
+首页右侧链接即可获取
 
 ## Postscript
 
