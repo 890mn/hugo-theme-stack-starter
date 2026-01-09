@@ -1,5 +1,5 @@
 ---
-title: "HinarUI Environment Setting / 工作环境配置"
+title: "HinarUI / 环境配置及烧录"
 description: Guide for HinarUI deployment
 date: 2025-07-15 02:00:00+0000
 categories: ["Embedded Develop"]
