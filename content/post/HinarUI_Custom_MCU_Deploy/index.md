@@ -1,53 +1,101 @@
 ---
 title: HinarUI / 自定义MCU部署配置
 description: 参考 GitHub 中现有定义整理的自定义 MCU 适配说明
-date: 2025-03-15 10:00:00+0000
+date: 2026-01-09 10:00:00+0000
 categories: ["Embedded Develop"]
 tags: ["HinarUI", "MCU"]
 ---
 
-自定义 MCU 部署的核心思路是：以仓库中已有的 MCU 定义为模板，保持配置结构一致，再按你的硬件参数补齐细节。
+我自己给 HinarUI 换过 MCU，踩过的坑不止一个。下面这份流程不是“模板化步骤”，而是我照着 GitHub 里现有定义一点点抠出来的体感总结：照着它做，出问题时也更容易定位。
 
-## 快速流程
+## 我习惯的起步思路
 
-1. 选取最接近的 MCU/板卡定义作为模板，复制并更名。
-2. 更新 MCU 相关配置：时钟、外设、Flash/RAM、供电与调试接口。
-3. 补齐显示驱动与接口参数（SPI/I2C、分辨率、刷新速率等）。
-4. 补齐引脚映射（RST/DC/CS/BL/INT 等）并校验电平与复用。
-5. 更新构建配置（编译器选项、链接脚本、源码路径）。
-6. 烧录并验证：先跑最小化 UI，再打开完整功能。
+1. 先挑一个和你最接近的 MCU/板卡定义当“底板”。不求完美，关键是结构相同。
+2. 先让屏幕点亮，再谈 UI；先跑最小 demo，再谈功能完整。
+3. 每次只动一个点（时钟 / SPI / 引脚），这样错误更好抓。
 
-## 配置要点（参考仓库现有定义的组织方式）
+## 以 STM32F103C8 为例（PlatformIO）
 
-### 1. MCU/板级基础信息
-- **型号与频率**：确保系统时钟与外设时钟分频一致。
-- **存储资源**：Flash/RAM 大小决定 UI 资源加载方式。
-- **供电与调试**：确认调试接口可用，避免低功耗模式关闭调试。
+### 1) platformio.ini 先能编译过
 
-### 2. 显示驱动参数
-- **通信方式**：SPI/I2C 速度、模式、DMA 设置与驱动保持一致。
-- **分辨率与方向**：保持与 UI 资源导出参数一致，避免错位。
-- **刷新节奏**：控制刷新频率，平衡性能与功耗。
+```ini
+[env:bluepill]
+platform = ststm32
+board = bluepill_f103c8
+framework = stm32cube
+upload_protocol = stlink
+monitor_speed = 115200
+build_flags =
+  -DHINARUI_BOARD=STM32F103
+  -DHINARUI_OLED_SSD1306
+```
 
-### 3. 引脚映射与复用
-- **关键引脚**：RST/DC/CS/BL/INT 分配清晰，避免冲突。
-- **引脚电平**：注意有效电平与上拉/下拉，避免显示异常。
-- **复用冲突**：串口、调试、SPI 等复用引脚需提前规划。
+这一步的目标很单纯：工程先跑起来，编译器路径、链接脚本、烧录方式都通了，后面再去啃 UI。
 
-### 4. HAL/驱动适配
-- **延时与时间基准**：保证 UI 动画节拍稳定。
-- **SPI/I2C 发送函数**：统一接口与返回值，便于上层调用。
-- **GPIO 控制**：确保输出电平与初始化顺序正确。
+### 2) MCU 配置别贪快，最常见的坑是时钟
 
-### 5. 构建与烧录
-- **编译选项**：根据 MCU 架构设置优化等级与宏定义。
-- **链接脚本**：确认代码段、数据段与 UI 资源段位置。
-- **烧录工具**：优先验证最小功能，再完整烧录。
+如果 UI 动画忽快忽慢、刷屏会“抽动”，十有八九是时钟不稳。确保主频和 SysTick 都按你选的 MCU 来：
 
-## 验证建议
+```c
+// board_clock.c
+void SystemClock_Config(void) {
+    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-- 先跑纯色/文字页面，确认屏幕驱动稳定。
-- 再加载复杂 UI 资源，检查刷新与内存占用。
-- 最后打开完整交互逻辑，观察功耗与稳定性。
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9; // 72MHz
+    HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-如果遇到兼容性问题，可回退到 GitHub 中最接近的 MCU 定义，逐项对比差异即可定位。
+    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+                                 | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
+}
+```
+
+### 3) SPI/I2C 接口统一接口风格，方便 UI 上层调用
+
+别把驱动写“花”，保持接口统一，后面替换 MCU 才不崩。举个 SPI 的例子：
+
+```c
+// hal_spi.c
+void hinarui_spi_write(const uint8_t *data, size_t len) {
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)data, len, 100);
+}
+
+void hinarui_gpio_set(uint16_t pin, GPIO_PinState state) {
+    HAL_GPIO_WritePin(GPIOA, pin, state);
+}
+```
+
+### 4) 引脚映射一定要写清楚
+
+我当时最容易错的是 DC/CS/RST 引脚顺序，写清楚能救命：
+
+```c
+// board_pins.h
+#define OLED_RST_PIN    GPIO_PIN_0
+#define OLED_DC_PIN     GPIO_PIN_1
+#define OLED_CS_PIN     GPIO_PIN_4
+#define OLED_PORT       GPIOA
+```
+
+### 5) 显示参数和 UI 资源要“同频”
+
+你导出的 UI 如果是 128x64，就别在驱动里写成 128x32。屏幕方向也要对齐，别到最后全是偏移。
+
+## 我常用的验证顺序
+
+1. **纯色 + 清屏**：能稳定刷屏，就说明驱动基本没问题。
+2. **文字/图标**：确认字体、位图方向没反。
+3. **完整 UI**：最后再上动画和交互逻辑。
+
+## 最后一点真话
+
+适配 MCU 就像换底盘，最怕的是“以为自己改完了”。你只要把每一步都写清楚，后面别人接手时也能少走很多弯路。如果你愿意，直接拿 GitHub 里现成的定义对照，一项项比对，很快就能定位问题。

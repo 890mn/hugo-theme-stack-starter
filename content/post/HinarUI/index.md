@@ -3,7 +3,7 @@ title: HinarUI / Introduction
 description: Original Designed Embedded OLED UI V4
 date: 2025-09-19 02:00:00+0000
 categories: ["Embedded Develop"]
-tags: ["UI"]
+tags: ["HinarUI", "UI"]
 image: HinarUI.jpg
 ---
 
@@ -48,4 +48,3 @@ Original OLED UI Design based on Embedded Platform, with complete software, hard
 ## Postscript
 
 Thanks for u here whatever this project can or not helps you, any problem please use `issue` or contact me by [Gmail](mailto:linkjoestar402212@gmail.com)
-
