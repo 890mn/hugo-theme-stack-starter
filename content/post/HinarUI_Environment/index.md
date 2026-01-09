@@ -3,9 +3,9 @@ title: "HinarUI / 环境配置及烧录"
 description: Guide for HinarUI deployment
 date: 2025-07-15 02:00:00+0000
 categories: ["Embedded Develop"]
-tags: ["UI"]
+tags: ["HinarUI"]
 slug: HinarUI_Environment
-image:
+weight: -5
 ---
 
 ![Bilibili](https://img.shields.io/badge/Bilibili-EE979F?link=https%3A%2F%2Fspace.bilibili.com%2F45409103)
@@ -15,7 +15,7 @@ image:
 ![Static Badge](https://img.shields.io/github/v/release/890mn/HinarUI?color=%23263C53)
 
 本篇内容将对 **环境配置** 作详细说明  
-通过阅读此内容可以进行一次完整的烧录过程，而对于非 **硬件配置** 中所提及的 `HinarUI PCB` 的部署教程请阅读 **部署配置**
+通过阅读此内容可以进行一次完整的烧录过程，而对于非 **本开源项目** 中所提及的 [HinarUI / 原生PCB部署配置](http://link2hinar.fun/p/hinarui_pcb_deploy/) 的部署教程请阅读 [HinarUI / 自定义MCU部署配置](http://link2hinar.fun/p/hinarui_custom_mcu_deploy/)
 
 ## 前置环境需求
 首先需要自行检查前置软件是否安装，如已安装可跳过对应部分
