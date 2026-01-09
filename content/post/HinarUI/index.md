@@ -3,7 +3,7 @@ title: HinarUI / Introduction
 description: Original Designed Embedded OLED UI V4
 date: 2025-09-19 02:00:00+0000
 categories: ["Embedded Develop"]
-tags: ["HinarUI", "UI"]
+tags: ["HinarUI"]
 image: HinarUI.jpg
 weight: -10
 ---
@@ -14,20 +14,15 @@ weight: -10
 ![GitHub last commit](https://img.shields.io/github/last-commit/890mn/HinarUI?labelColor=%2339354A&color=%239BB9B4)
 ![Static Badge](https://img.shields.io/github/v/release/890mn/HinarUI?color=%23263C53)
 
-HinarUI 是一套面向嵌入式设备的原创 OLED UI 方案，包含软件框架、硬件电路与外壳设计。我希望它不仅“能显示”，还要可维护、可扩展、可复制，这也是它从 V1 演进到 V4 的核心动机。
+HinarUI 是一套面向嵌入式设备的原创 OLED UI 方案，包含软件框架、硬件电路与外壳设计
+我希望它不仅“能显示”，还要可维护、可扩展、可复制，这也是它从 V1 演进到 V4 的核心动机
 
 ## 项目说明
 
-- **完整设计链路**：从 UI 交互逻辑到 PCB 与外壳，形成可复用的整体方案。
-- **移植友好**：支持不同 MCU 平台，提供清晰的接口与配置组织方式。
-- **轻量但可扩展**：基础功能简洁，方便按项目需求增加模块与动画。
-- **可持续迭代**：以版本节奏推进，重点在稳定性与工程可落地性。
-
-## 快速入口
-
-- **环境配置与烧录**：完成基础工具与构建配置。
-- **原生 PCB 部署**：适配官方 PCB 的标准部署流程。
-- **自定义 MCU 部署**：以仓库中的定义为模板进行移植。
+- **完整设计链路**：从 UI 交互逻辑到 PCB 与外壳，形成可复用的整体方案
+- **移植友好**：支持不同 MCU 平台，提供清晰的接口与配置组织方式
+- **轻量但可扩展**：基础功能简洁，方便按项目需求增加模块与动画
+- **可持续迭代**：以版本节奏推进，重点在稳定性与工程可落地性
 
 ## Current Status
 
