@@ -46,12 +46,6 @@ HinarUI 是一套面向嵌入式设备的原创 OLED UI 方案，包含软件框
 - 2024.10.12 | Icon on
 - 2024.10.09 | base on
 
-## 部署教程
-
-- [HinarUI / 环境配置及烧录](http://link2hinar.fun/p/hinarui_environment/)
-- [HinarUI / 原生PCB部署配置](http://link2hinar.fun/p/hinarui_pcb_deploy/)
-- [HinarUI / 自定义MCU部署配置](http://link2hinar.fun/p/hinarui_custom_mcu_deploy/)
-
 ## 资源下载
 首页右侧链接即可获取
 

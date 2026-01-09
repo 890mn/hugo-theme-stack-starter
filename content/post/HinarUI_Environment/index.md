@@ -15,7 +15,7 @@ weight: -5
 ![Static Badge](https://img.shields.io/github/v/release/890mn/HinarUI?color=%23263C53)
 
 本篇内容将对 **环境配置** 作详细说明  
-通过阅读此内容可以进行一次完整的烧录过程，而对于非 **本开源项目** 中所提及的 [HinarUI / 原生PCB部署配置](http://link2hinar.fun/p/hinarui_pcb_deploy/) 的部署教程请阅读 [HinarUI / 自定义MCU部署配置](http://link2hinar.fun/p/hinarui_custom_mcu_deploy/)
+通过阅读此内容可以进行一次完整的烧录过程，而对于非 **本开源项目** 中所提及的 [HinarUI / 原生PCB部署配置](https://link2hinar.fun/p/hinarui-/-%E5%8E%9F%E7%94%9Fpcb%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/) 的部署教程请阅读 [HinarUI / 自定义MCU部署配置](https://link2hinar.fun/p/hinarui-/-%E8%87%AA%E5%AE%9A%E4%B9%89mcu%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/)
 
 ## 前置环境需求
 首先需要自行检查前置软件是否安装，如已安装可跳过对应部分
